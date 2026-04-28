@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(112, 200, 237);
 }
 
 .gameDiv {
