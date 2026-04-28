@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 200px;
+
+}
+
+.gameDiv form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gameDiv input {
+    width: 140px;
+    height: 42px;
+    padding: 0 10px;
+}
+
+.results {
+    margin-top: 12px;
+    text-align: center;
+    line-height: 1.8;
+}
