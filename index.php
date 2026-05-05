@@ -60,6 +60,11 @@ if (isset($_POST['gambleButton'])) {
       <p><?php echo htmlspecialchars($_SESSION['p3']); ?> rolled: <?php echo $n3; ?></p>
 
       <h2><?php echo htmlspecialchars($winner); ?></h2>
+      <script>
+        setTimeout(function () {
+          window.location.href = "index.php";
+        }, 10000);
+      </script>
     </div>
   <?php endif; ?>
 </body>
