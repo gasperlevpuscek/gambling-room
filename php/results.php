@@ -23,9 +23,11 @@ $third = $players[2];
     <meta charset="UTF-8">
     <title>Results</title>
     <link rel="stylesheet" href="../styles/results.css">
+    <link rel="icon" type="image/gif" href="..images/dice-anim.gif">
 </head>
 
 <body>
+
     <h1>Results</h1>
     <div class="podium">
         <div class="place first">
@@ -46,9 +48,6 @@ $third = $players[2];
             <p><?php echo $third["score"]; ?> points</p>
         </div>
     </div>
-    <form action="../index.php" method="post">
-        <button type="submit">PLAY AGAIN</button>
-    </form>
 
     <p>
         Redirecting to main page:

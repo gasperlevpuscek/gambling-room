@@ -9,20 +9,22 @@ session_start();
   <meta charset="UTF-8">
   <title>Gambling game</title>
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/gif" href="images/dice-anim.gif">
 </head>
 
 <body>
 
   <div class="gameDiv">
+    <img src="images/dices.png">
     <h1>Cube Gambling Game</h1>
 
     <form action="php/game.php" method="post">
       <div class="names">
-        <input type="text" name="name1" required><br><br>
-        <input type="text" name="name2" required><br><br>
-        <input type="text" name="name3" required><br><br>
+        <input type="text" name="name1" placeholder="Player 1" required><br><br>
+        <input type="text" name="name2" placeholder="Player 2" required><br><br>
+        <input type="text" name="name3" placeholder="Player 3" required><br><br>
       </div>
-      Dices:
+      <a>Dices:</a>
       <select name="cubeNumbers">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -31,7 +33,7 @@ session_start();
 
       <br><br>
 
-      Throws:
+      <a>Throws:</a>
       <select name="rollsNumber">
         <option value="1">1</option>
         <option value="2">2</option>

@@ -57,90 +57,91 @@ $gameFinished = $_SESSION["rollNumber"] >= $_SESSION["all_rolls"];
 
 <head>
     <meta charset="UTF-8">
-    <title>Game</title>
+    <title>Gamble!</title>
     <link rel="stylesheet" href="../styles/game.css">
+    <link rel="icon" type="image/gif" href="..images/dice-anim.gif">
 </head>
 
 <body>
+    <div class="gameDiv">
 
-    <table>
-        <tr>
-            <td>
-                <?php
-                for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
-                    if (isset($_SESSION["dice1"][$i])) {
-                        echo '<img src="../images/dice' . $_SESSION["dice1"][$i] . '.gif">';
-                    } else {
-                        echo '<img src="../images/dice-anim.gif">';
+        <table>
+            <tr>
+                <td>
+                    <?php
+                    for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
+                        if (isset($_SESSION["dice1"][$i])) {
+                            echo '<img src="../images/dice' . $_SESSION["dice1"][$i] . '.gif">';
+                        } else {
+                            echo '<img src="../images/dice-anim.gif">';
+                        }
                     }
-                }
-                ?>
-            </td>
+                    ?>
+                </td>
 
-            <td>
-                <?php
-                for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
-                    if (isset($_SESSION["dice2"][$i])) {
-                        echo '<img src="../images/dice' . $_SESSION["dice2"][$i] . '.gif">';
-                    } else {
-                        echo '<img src="../images/dice-anim.gif">';
+                <td>
+                    <?php
+                    for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
+                        if (isset($_SESSION["dice2"][$i])) {
+                            echo '<img src="../images/dice' . $_SESSION["dice2"][$i] . '.gif">';
+                        } else {
+                            echo '<img src="../images/dice-anim.gif">';
+                        }
                     }
-                }
-                ?>
-            </td>
+                    ?>
+                </td>
 
-            <td>
-                <?php
-                for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
-                    if (isset($_SESSION["dice3"][$i])) {
-                        echo '<img src="../images/dice' . $_SESSION["dice3"][$i] . '.gif">';
-                    } else {
-                        echo '<img src="../images/dice-anim.gif">';
+                <td>
+                    <?php
+                    for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
+                        if (isset($_SESSION["dice3"][$i])) {
+                            echo '<img src="../images/dice' . $_SESSION["dice3"][$i] . '.gif">';
+                        } else {
+                            echo '<img src="../images/dice-anim.gif">';
+                        }
                     }
-                }
-                ?>
-            </td>
-        </tr>
+                    ?>
+                </td>
+            </tr>
 
-        <tr>
-            <td><?php echo ($_SESSION["name1"]); ?></td>
-            <td><?php echo ($_SESSION["name2"]); ?></td>
-            <td><?php echo ($_SESSION["name3"]); ?></td>
-        </tr>
+            <tr>
+                <td><?php echo ($_SESSION["name1"]); ?></td>
+                <td><?php echo ($_SESSION["name2"]); ?></td>
+                <td><?php echo ($_SESSION["name3"]); ?></td>
+            </tr>
 
-        <tr>
-            <td><?php echo $_SESSION["points1"]; ?></td>
-            <td><?php echo $_SESSION["points2"]; ?></td>
-            <td><?php echo $_SESSION["points3"]; ?></td>
-        </tr>
+            <tr>
+                <td><?php echo $_SESSION["points1"]; ?></td>
+                <td><?php echo $_SESSION["points2"]; ?></td>
+                <td><?php echo $_SESSION["points3"]; ?></td>
+            </tr>
 
-        <tr>
-            <td colspan="3">
-                Roll:
-                <?php echo $_SESSION["rollNumber"]; ?>
-                /
-                <?php echo $_SESSION["all_rolls"]; ?>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="3">
+                    Roll:
+                    <?php echo $_SESSION["rollNumber"]; ?>
+                    /
+                    <?php echo $_SESSION["all_rolls"]; ?>
+                </td>
+            </tr>
+        </table>
 
-    </table>
+        <br>
 
-    <br>
+        <?php if (!$gameFinished): ?>
 
-    <?php if (!$gameFinished): ?>
+            <form method="post">
+                <button type="submit" name="roll">ROLL</button>
+            </form>
 
-        <form method="post">
-            <button type="submit" name="roll">ROLL</button>
-        </form>
+        <?php else: ?>
 
-    <?php else: ?>
+            <form action="results.php" method="post">
+                <button type="submit">RESULTS</button>
+            </form>
 
-        <form action="results.php" method="post">
-            <button type="submit">RESULTS</button>
-        </form>
-
-    <?php endif; ?>
-
+        <?php endif; ?>
+    </div>
 </body>
 
 </html>
