@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: rgb(73, 124, 212);
+}
+
+.gameDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+
+}
+
+.playerName {
+    color: black;
+    margin: 10px;
+    font-size: 24px;
+}
+
+tr {}
+
+td {
+    height: 50px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dice {
+    display: block;
+    margin: 6px auto;
+    width: 120px;
+    height: auto;
+}
