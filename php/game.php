@@ -13,11 +13,13 @@ if (!isset($_POST["roll"])) {
     $_SESSION["points1"] = 0;
     $_SESSION["points2"] = 0;
     $_SESSION["points3"] = 0;
+
+    $_SESSION["dice1"] = array();
+    $_SESSION["dice2"] = array();
+    $_SESSION["dice3"] = array();
 }
 
-if (isset($_POST["roll"])) {
-
-
+if (isset($_POST["roll"]) && $_SESSION["rollNumber"] < $_SESSION["all_rolls"]) {
     $_SESSION["dice1"] = array();
     $_SESSION["dice2"] = array();
     $_SESSION["dice3"] = array();
@@ -43,13 +45,11 @@ if (isset($_POST["roll"])) {
     $_SESSION["points1"] += $sum1;
     $_SESSION["points2"] += $sum2;
     $_SESSION["points3"] += $sum3;
+
+    $_SESSION["rollNumber"]++;
 }
 
-if ($_SESSION["rollNumber"] >= $_SESSION["all_rolls"]) {
-    header("Location: results.php");
-    exit();
-}
-$_SESSION["rollNumber"]++;
+$gameFinished = $_SESSION["rollNumber"] >= $_SESSION["all_rolls"];
 ?>
 
 <!DOCTYPE html>
@@ -64,15 +64,14 @@ $_SESSION["rollNumber"]++;
 <body>
 
     <table>
-
         <tr>
             <td>
                 <?php
                 for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
-                    if ($_SESSION["rollNumber"] == 0) {
-                        echo '<img src="../images/dice-anim.gif">';
-                    } else {
+                    if (isset($_SESSION["dice1"][$i])) {
                         echo '<img src="../images/dice' . $_SESSION["dice1"][$i] . '.gif">';
+                    } else {
+                        echo '<img src="../images/dice-anim.gif">';
                     }
                 }
                 ?>
@@ -81,10 +80,10 @@ $_SESSION["rollNumber"]++;
             <td>
                 <?php
                 for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
-                    if ($_SESSION["rollNumber"] == 0) {
-                        echo '<img src="../images/dice-anim.gif">';
-                    } else {
+                    if (isset($_SESSION["dice2"][$i])) {
                         echo '<img src="../images/dice' . $_SESSION["dice2"][$i] . '.gif">';
+                    } else {
+                        echo '<img src="../images/dice-anim.gif">';
                     }
                 }
                 ?>
@@ -93,10 +92,10 @@ $_SESSION["rollNumber"]++;
             <td>
                 <?php
                 for ($i = 0; $i < $_SESSION["cubeNumbers"]; $i++) {
-                    if ($_SESSION["rollNumber"] == 0) {
-                        echo '<img src="../images/dice-anim.gif">';
-                    } else {
+                    if (isset($_SESSION["dice3"][$i])) {
                         echo '<img src="../images/dice' . $_SESSION["dice3"][$i] . '.gif">';
+                    } else {
+                        echo '<img src="../images/dice-anim.gif">';
                     }
                 }
                 ?>
@@ -104,9 +103,9 @@ $_SESSION["rollNumber"]++;
         </tr>
 
         <tr>
-            <td><?php echo $_SESSION["name1"]; ?></td>
-            <td><?php echo $_SESSION["name2"]; ?></td>
-            <td><?php echo $_SESSION["name3"]; ?></td>
+            <td><?php echo ($_SESSION["name1"]); ?></td>
+            <td><?php echo ($_SESSION["name2"]); ?></td>
+            <td><?php echo ($_SESSION["name3"]); ?></td>
         </tr>
 
         <tr>
@@ -117,12 +116,10 @@ $_SESSION["rollNumber"]++;
 
         <tr>
             <td colspan="3">
-
                 Roll:
                 <?php echo $_SESSION["rollNumber"]; ?>
                 /
                 <?php echo $_SESSION["all_rolls"]; ?>
-
             </td>
         </tr>
 
@@ -130,18 +127,19 @@ $_SESSION["rollNumber"]++;
 
     <br>
 
-    <form method="post">
+    <?php if (!$gameFinished): ?>
 
-        <input type="hidden" name="rollsNumber" value="<?php echo $_SESSION["all_rolls"]; ?>">
-        <input type="hidden" name="cubeNumbers" value="<?php echo $_SESSION["cubeNumbers"]; ?>">
+        <form method="post">
+            <button type="submit" name="roll">ROLL</button>
+        </form>
 
-        <input type="hidden" name="name1" value="<?php echo $_SESSION["name1"]; ?>">
-        <input type="hidden" name="name2" value="<?php echo $_SESSION["name2"]; ?>">
-        <input type="hidden" name="name3" value="<?php echo $_SESSION["name3"]; ?>">
+    <?php else: ?>
 
-        <button type="submit" name="roll">ROLL</button>
+        <form action="results.php" method="post">
+            <button type="submit">RESULTS</button>
+        </form>
 
-    </form>
+    <?php endif; ?>
 
 </body>
 

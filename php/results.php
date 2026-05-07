@@ -1,53 +1,72 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["name1"], $_SESSION["name2"], $_SESSION["name3"])) {
-    header("Location: ../index.php");
-    exit;
-}
+$players = array(
+    array("name" => $_SESSION["name1"], "score" => $_SESSION["points1"]),
+    array("name" => $_SESSION["name2"], "score" => $_SESSION["points2"]),
+    array("name" => $_SESSION["name3"], "score" => $_SESSION["points3"])
+);
 
-$scores = [
-    $_SESSION["name1"] => (int) $_SESSION["points1"],
-    $_SESSION["name2"] => (int) $_SESSION["points2"],
-    $_SESSION["name3"] => (int) $_SESSION["points3"],
-];
+usort($players, function ($a, $b) {
+    return $b["score"] - $a["score"];
+});
 
-$highestScore = max($scores);
-$winners = array_keys(array_filter($scores, static function ($score) use ($highestScore) {
-    return $score === $highestScore;
-}));
-
+$first = $players[0];
+$second = $players[1];
+$third = $players[2];
 ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <title>Results</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/results.css">
 </head>
 
 <body>
+    <h1>Results</h1>
+    <div class="podium">
+        <div class="place first">
+            <h2>1st</h2>
+            <p><?php echo $first["name"]; ?></p>
+            <p><?php echo $first["score"]; ?> points</p>
+        </div>
 
-    <div class="gameDiv">
-        <h1>Results</h1>
+        <div class="place second">
+            <h2>2nd</h2>
+            <p><?php echo $second["name"]; ?></p>
+            <p><?php echo $second["score"]; ?> points</p>
+        </div>
 
-        <div class="results">
-            <p><?php echo htmlspecialchars($_SESSION["name1"], ENT_QUOTES, 'UTF-8'); ?>:
-                <?php echo $scores[$_SESSION["name1"]]; ?>
-            </p>
-            <p><?php echo htmlspecialchars($_SESSION["name2"], ENT_QUOTES, 'UTF-8'); ?>:
-                <?php echo $scores[$_SESSION["name2"]]; ?>
-            </p>
-            <p><?php echo htmlspecialchars($_SESSION["name3"], ENT_QUOTES, 'UTF-8'); ?>:
-                <?php echo $scores[$_SESSION["name3"]]; ?>
-            </p>
-
-            <h2>Winner: <?php echo htmlspecialchars(implode(', ', $winners), ENT_QUOTES, 'UTF-8'); ?></h2>
-
-            <p><a href="../index.php">New Game</a></p>
+        <div class="place third">
+            <h2>3rd</h2>
+            <p><?php echo $third["name"]; ?></p>
+            <p><?php echo $third["score"]; ?> points</p>
         </div>
     </div>
+    <form action="../index.php" method="post">
+        <button type="submit">PLAY AGAIN</button>
+    </form>
+
+    <p>
+        Redirecting to main page:
+        <span id="countdown">10</span>
+    </p>
+
+    <script>
+        let timeLeft = 10;
+
+        setInterval(function () {
+            timeLeft--;
+            document.getElementById("countdown").innerHTML = timeLeft;
+
+            if (timeLeft <= 0) {
+                window.location.href = "../index.php";
+            }
+        }, 1000);
+    </script>
 
 </body>
 

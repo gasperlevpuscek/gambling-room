@@ -14,13 +14,14 @@ session_start();
 <body>
 
   <div class="gameDiv">
-    <h1>Namizna igra met kocke</h1>
+    <h1>Cube Gambling Game</h1>
 
     <form action="php/game.php" method="post">
-      <input type="text" name="name1" required><br><br>
-      <input type="text" name="name2" required><br><br>
-      <input type="text" name="name3" required><br><br>
-
+      <div class="names">
+        <input type="text" name="name1" required><br><br>
+        <input type="text" name="name2" required><br><br>
+        <input type="text" name="name3" required><br><br>
+      </div>
       Dices:
       <select name="cubeNumbers">
         <option value="1">1</option>
@@ -45,7 +46,6 @@ session_start();
       <br><br>
 
       <input type="submit" value="Play">
-
     </form>
   </div>
 
