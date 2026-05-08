@@ -127,19 +127,14 @@ $gameFinished = $_SESSION["rollNumber"] >= $_SESSION["all_rolls"];
         </table>
 
         <br>
-
         <?php if (!$gameFinished): ?>
-
             <form method="post">
                 <button type="submit" name="roll">ROLL</button>
             </form>
-
         <?php else: ?>
-
             <form action="results.php" method="post">
                 <button type="submit">RESULTS</button>
             </form>
-
         <?php endif; ?>
     </div>
 </body>

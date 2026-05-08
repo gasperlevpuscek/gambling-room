@@ -30,16 +30,16 @@ $third = $players[2];
 
     <h1>Results</h1>
     <div class="podium">
+         <div class="place second">
+            <h2>2nd</h2>
+            <p><?php echo $second["name"]; ?></p>
+            <p><?php echo $second["score"]; ?> points</p>
+        </div>
+
         <div class="place first">
             <h2>1st</h2>
             <p><?php echo $first["name"]; ?></p>
             <p><?php echo $first["score"]; ?> points</p>
-        </div>
-
-        <div class="place second">
-            <h2>2nd</h2>
-            <p><?php echo $second["name"]; ?></p>
-            <p><?php echo $second["score"]; ?> points</p>
         </div>
 
         <div class="place third">
