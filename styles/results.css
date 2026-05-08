@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-image: url("../images/background1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: black;
+    text-align: center;
+    margin-top: 180px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.25);
+    z-index: 0;
+}
+
+.resultsDiv {
+    position: relative;
+    z-index: 1;
+    width: 1000px;
+    min-height: 600px;
+    margin: 100px auto;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    font-size: 58px;
+    margin-bottom: 40px;
+}
+
+.podium {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: end;
+    margin-top: 14px;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 10px 14px;
+    background-color: #f7f9fc;
+    border: 1px solid #e3e8f0;
+    width: fit-content;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.place {
+    width: 250px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+}
+
+.first {
+    min-height: 260px;
+    background: #e8e191;
+}
+
+.second {
+    min-height: 220px;
+    background: #aeaeae;
+
+}
+
+.third {
+    min-height: 190px;
+    background: #87562e;
+
+}
+
+.place h2 {
+    font-size: 46px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.place p {
+    font-size: 24px;
+    margin: 8px 0;
+}
+
+.place p:first-of-type {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+button {
+    width: 220px;
+    height: 60px;
+    font-size: 22px;
+    background: #e13c3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c92f3b;
+}
+
+.countdownText {
+    font-size: 22px;
+    margin-top: 20px;
+}

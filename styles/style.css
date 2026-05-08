@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../images/background1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #1f2a37;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-color: #f1f4f8;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.31);
+    pointer-events: none;
+    z-index: 0;
+}
+
+img {
+    width: 140px;
+    height: 100px;
+}
+
+h1 {
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+
+.gameDiv {
+    position: relative;
+    z-index: 1;
+    width: 1000px;
+    height: 600px;
+    margin: 120px auto;
+    padding: 32px;
+    background-color: #ffffff;
+    border: 1px solid #d7dee8;
+    text-align: center;
+}
+
+a {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.names {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.names input {
+    width: 240px;
+    font-size: 18px;
+    padding: 10px 12px;
+    border: 1px solid #c7d0db;
+}
+
+.options {
+    margin-bottom: 24px;
+}
+
+select {
+    font-size: 18px;
+    padding: 8px 10px;
+    margin-right: 12px;
+    border: 1px solid #c7d0db;
+    background-color: #ffffff;
+}
+
+input[type="submit"],
+button {
+    height: 46px;
+    width: 180px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 18px;
+    border: 1px solid #ecf0f5;
+    background-color: #e13c3c;
+    color: #ffffff;
+}
